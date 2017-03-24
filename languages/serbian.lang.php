@@ -46,5 +46,10 @@
 	$lang['ACCOUNT_EXISTS'] = 'Korisnik sa tim kredencijalima vec postoji.';
 	$lang['FIELDS_REQUIRED'] = 'Morate popuniti sva polja.';
 
+	// When user is logged in
+
+	$lang['MENU_ACCOUNT'] = 'Moj profil';
+	$lang['MENU_SETTINGS'] = 'Podesavanja';
+	$lang['MENU_LOGOUT'] = 'Odjava';
 
 ?>

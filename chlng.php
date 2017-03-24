@@ -20,6 +20,14 @@ if(isset($_GET['lang']))
 		exit();	
 
 		break;	
+
+		case 'german':
+		$_SESSION['lang'] = 'de.ge';
+
+		header('Location: ' . $_SERVER['HTTP_REFERER']);
+		exit();	
+
+		break;			
 	}
 }
 else

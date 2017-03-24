@@ -12,6 +12,10 @@
 			case 'sr.rs':
 			$langfile = 'serbian.lang.php';
 			break;
+
+			case 'de.ge':
+			$langfile = 'de.lang.php';
+			break;			
 		}
 	}
 	else

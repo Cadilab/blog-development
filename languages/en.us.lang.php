@@ -44,5 +44,11 @@
 
 	$lang['PASSWORD_NOMATCH'] = "Passwords don't match";
 	$lang['ACCOUNT_EXISTS'] = 'Account with these credentials already exists.';
-	$lang['FIELDS_REQUIRED'] = 'All fields are required.';						
+	$lang['FIELDS_REQUIRED'] = 'All fields are required.';
+
+	// When user is logged in
+
+	$lang['MENU_ACCOUNT'] = 'My Account';
+	$lang['MENU_SETTINGS'] = 'Settings';
+	$lang['MENU_LOGOUT'] = 'Log out';					
 ?>

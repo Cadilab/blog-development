@@ -19,9 +19,35 @@
       <li><a href="#"><span class="glyphicon glyphicon-sort"></span> <?php echo $lang['MENU_POPULAR']; ?></a></li>
       <li><a href="#"><span class="glyphicon glyphicon-question-sign"></span> <?php echo $lang['MENU_ABOUT']; ?></a></li>
     </ul>
-        <ul class="nav navbar-nav navbar-right">
-      <li><a href="register.php"><span class="glyphicon glyphicon-user"></span> <?php echo $lang['MENU_REGISTER']; ?></a></li>
-      <li><a href="#" data-toggle="modal" data-target="#login-modal"><span class="glyphicon glyphicon-log-in"></span> <?php echo $lang['MENU_LOGIN']; ?></a></li>
+    <ul class="nav navbar-nav navbar-right">
+
+      <?php 
+
+      if(!logged_in())
+      {
+        echo ' 
+          <li><a href="register.php"><span class="glyphicon glyphicon-user"></span> ', $lang['MENU_REGISTER'] ,' </a></li>
+          <li><a href="#" data-toggle="modal" data-target="#login-modal"><span class="glyphicon glyphicon-log-in"></span> ', $lang['MENU_LOGIN'] ,'</a></li> ';
+      }
+      else
+      {
+        echo '
+
+        <li class="dropdown">
+          <a class="dropdown-toggle" data-toggle="dropdown" href="#"> ', $_SESSION['username'] ,'
+          <span class="caret"></span></a>
+
+          <ul class="dropdown-menu">
+            <li><a href="#">', $lang['MENU_ACCOUNT'] ,'</a></li>
+            <li><a href="#">', $lang['MENU_SETTINGS'] ,'</a></li>
+            <li><a href="logout.php">', $lang['MENU_LOGOUT'] ,'</a></li>
+          </ul>
+        </li>
+        ';
+      }
+
+      ?>
+
     </ul>
   </div>	
 </nav>

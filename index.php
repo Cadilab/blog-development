@@ -21,11 +21,11 @@
 
 <?php 
 
-	if(logged_in())
+	if(!logged_in())
 	{
 		include('assets/content/logged_out.php');
 	}
-	elseif (!logged_in())
+	elseif (logged_in())
 	{
 		include('assets/content/logged_in.php');
 	}

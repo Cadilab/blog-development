@@ -28,14 +28,18 @@
 					else
 					{
 						$password = password_hash($_POST['password'], PASSWORD_BCRYPT);
+						$username = ucfirst($_POST['username']);
 
 						$stmt = $connection->prepare("INSERT INTO users (username, email, password) VALUES (:username, :email, :password)");
 						$stmt->bindParam(':email', $_POST['email'], PDO::PARAM_STR);
-						$stmt->bindParam(':username', $_POST['username'], PDO::PARAM_STR);
+						$stmt->bindParam(':username', $username, PDO::PARAM_STR);
 						$stmt->bindParam(':password', $password, PDO::PARAM_STR);
 						$stmt->execute();
 
-						header("location: blabla.php");
+						$_SESSION['logged_in'] = true;
+						$_SESSION['username'] = $username;
+
+						header("location: index.php");
 					}
 				}
 			}
@@ -73,7 +77,8 @@
 						}
 
 						$_SESSION['logged_in'] = true;
-						header("location: afaf.php");
+						$_SESSION['username'] = $row['username'];
+						header("location: index.php");
 						exit();
 					}	
 					else
