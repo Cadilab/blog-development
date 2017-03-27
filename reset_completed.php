@@ -17,7 +17,7 @@
 
     if(logged_in()) 
     {
-        header("location: index.php");
+        header("location: home");
         exit();
     }
 ?>
@@ -101,73 +101,64 @@
 
 ?>
 
-<form method="POST">
+<?php
 
-    <div class="row">
-        <div class="col-sm-6">
+if(isset($_GET['token']) && isset($_GET['email']))
+{
+    $token = $_GET['token'];
+    $email = $_GET['email'];
 
-            <div id="frmCheckUsername">
+    $stmt = $connection->prepare("SELECT * FROM users WHERE email = :email AND reset_token = :token LIMIT 1");
+    $stmt->bindParam(':email', $email, PDO::PARAM_STR);
+    $stmt->bindParam(':token', $token, PDO::PARAM_STR);
+    $stmt->execute();
 
-                <div class="form-group">
-                    <input type="text" class="demoInputBox" size="55" name="username" id="username" placeholder="<?php echo $lang['PH_USERNAME']; ?>" onchange="checknameAvailability()">
-                    <span id="user-availability-status"></span>
+    if($stmt->rowCount() > 0)
+    {
+        echo '
+
+        <form method="POST">
+
+            <div class="row">
+                <div class="col-sm-6">
+
+                    <div id="frmCheckUsername">
+
+                        <p>', $lang['RPW_COMPLETED'] ,'</p>
+
+                        <div class="form-group">
+                            <input type="password" class="demoInputBox" size="55" name="password" id="email" placeholder="', $lang['PH_PASSWORD'] ,'">
+                        </div>
+
+                        <div class="form-group">
+                            <input type="password" class="demoInputBox" size="55" name="repassword" id="email" placeholder="', $lang['PH_REPASSWORD'] ,'">
+                        </div>
+
+                        <input type="submit" name="update_pwd_submit" class="btn btn-primary" value="', $lang['BUTTON_UPDATE'] ,'">
+                    
+                    </div>
                 </div>
-
-
-                <div class="form-group">
-                    <input type="email" class="demoInputBox" size="55" name="email" id="email" placeholder="<?php echo $lang['PH_EMAIL']; ?>" onchange="checkemailAvailability()">
-                    <span id="email-availability-status"></span>           
-                </div>
-
-                <div class="form-group">
-                    <input type="password" class="demoInputBox" size="55" name="password" id="pwd" placeholder="<?php echo $lang['PH_PASSWORD']; ?>">
-                </div>
-
-                <div class="form-group">
-                    <input type="password" class="demoInputBox" size="55" name="repassword" id="pwd" placeholder="<?php echo $lang['PH_REPASSWORD']; ?>">
-                </div>
-
-                <input type="submit" name="reg_submit" class="btn btn-primary" value="<?php echo $lang['MENU_REGISTER']; ?>">
-
-                <br><br>By signing up, you agree to the Terms of Service and Privacy Policy, including Cookie Use. Others will be able to find you by email or phone number when provided.
-
             </div>
-        </div>
-    </div>
 
-</form>    
+        </form>    
+
+        ';
+    }
+    else
+    {
+        header("location: password_reset");
+        exit();       
+    }
+}
+else
+{
+    header("location: password_reset");
+    exit();
+}
+
+?>
 
 </div>
-
-<script>
-
-function checknameAvailability() 
-{
-    jQuery.ajax({
-    url: "check_valid_data.php",
-    data:'username='+$("#username").val(),
-    type: "POST",
-    success:function(data){
-    $("#user-availability-status").html(data);
-    },
-    error:function (){}
-    });
-}
-
-function checkemailAvailability() 
-{
-    jQuery.ajax({
-    url: "check_valid_data.php",
-    data:'email='+$("#email").val(),
-    type: "POST",
-    success:function(data){
-    $("#email-availability-status").html(data);
-    },
-    error:function (){}
-    });
-}
-
-</script>
 
 </body>
 </html>

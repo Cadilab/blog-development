@@ -21,7 +21,7 @@
 
 	// Now we edit welcome message
 
-	$lang['BODY_WELCOME'] = '	<br/><br/><br/><h3>Dobrodosli na MyBlog.</h3>
+	$lang['BODY_WELCOME'] = '<h2>Dobrodosli na MyBlog.</h2>
 							<p>Na ovoj stranici mozete pronaci blogove kreirane od strane drugih korisnika, ali mozete objaviti i svoj!</p>
 							<p>Da dobijete potpun pristup sajtu morate se registrovati.</p>
 							<p>Ukoliko vec imate racun, prijavite se!</p>	';
@@ -36,7 +36,8 @@
 	$lang['PH_REPASSWORD'] = 'Ponovite lozinku';
 
 	$lang['LOGIN_HEADER'] = 'Unesite korisnicko ime i lozinku.';
-	$lang['LOGIN_REMEMBER'] = 'Zapamti me ?';
+	$lang['LOGIN_REMEMBER'] = 'Zapamti me';
+	$lang['LOGIN_FORGORPASS'] = 'Zaboravljena lozinka ?';
 
 	$lang['INVALID_CREDENTIALS'] = "Lozinka/Korisnicko ime nije validno";
 
@@ -45,11 +46,18 @@
 	$lang['PASSWORD_NOMATCH'] = 'Lozinke se ne poklapaju';
 	$lang['ACCOUNT_EXISTS'] = 'Korisnik sa tim kredencijalima vec postoji.';
 	$lang['FIELDS_REQUIRED'] = 'Morate popuniti sva polja.';
+	$lang['RPW_MESSAGE'] = 'Unesite vasu e-mail adresu u polje ispod:';
+	$lang['RESET_COMPLETED'] = 'Zahtev za reset lozinke je zapremljen! Proverite email adresu.';
+	$lang['RPW_COMPLETED'] = 'U polje ispod unesite novu lozinku:';
 
 	// When user is logged in
 
 	$lang['MENU_ACCOUNT'] = 'Moj profil';
 	$lang['MENU_SETTINGS'] = 'Podesavanja';
 	$lang['MENU_LOGOUT'] = 'Odjava';
+
+	// BUTTONS
+	$lang['BUTTON_NEXT'] = 'Dalje';
+	$lang['BUTTON_UPDATE'] = 'Sacuvaj';
 
 ?>

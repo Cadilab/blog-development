@@ -14,48 +14,118 @@
 
 	$pageTitle = "MyBlog: Register";
     include('functions/functions.php');
-	include('assets/header.php');
 
     if(logged_in()) 
     {
         header("location: index.php");
         exit();
     }
-
 ?>
 
-<style>
-	
-body{background:url(images/bg2.jpg) no-repeat center center fixed;position:absolute;top:0;left:0;min-height:100%;min-width:100%;background-size:cover}.navbar-fixed-top{position:relative}#footer{position:absolute;bottom:0;width:100%;height:60px;background:#ececec;padding-left:0px}@import "http://fonts.googleapis.com/css?family=Roboto";*{font-family:'Roboto', sans-serif}#login-modal .modal-dialog{width:350px}#login-modal input[type=text],input[type=password]{margin-top:10px}#div-login-msg,#div-lost-msg,#div-register-msg{border:1px solid #dadfe1;height:30px;line-height:28px;transition:all ease-in-out 500ms}#div-login-msg.success,#div-lost-msg.success,#div-register-msg.success{border:1px solid #68c3a3;background-color:#c8f7c5}#div-login-msg.error,#div-lost-msg.error,#div-register-msg.error{border:1px solid #eb575b;background-color:#ffcad1}#icon-login-msg,#icon-lost-msg,#icon-register-msg{width:30px;float:left;line-height:28px;text-align:center;background-color:#dadfe1;margin-right:5px;transition:all ease-in-out 500ms}#icon-login-msg.success,#icon-lost-msg.success,#icon-register-msg.success{background-color:#68c3a3 !important}#icon-login-msg.error,#icon-lost-msg.error,#icon-register-msg.error{background-color:#eb575b !important}#img_logo{max-height:100px;max-width:100px}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>MyBlog</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="/blog/css/style.css">
 
-</style>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+    <!-- Font Awesome ikonice jbg ovo koristim -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">   
+</head>
+
+<body>
+
+<div class="home-header">
+    <nav class="navbar navbar-default navbar-static-top">
+    <div class="container-fluid">
+        <ul class="nav navbar-nav">
+            <li><a href="/blog"><i class="fa fa-home"></i> <?php echo $lang['MENU_HOME']; ?></a></li>
+            <li class="dropdown">
+                <a class="dropdown-toggle" data-toggle="dropdown" href="#"><i class="fa fa-list-ul"></i> Action
+                <span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                    <li><a href="/blog/login">Login</a></li>
+                    <li><a href="/blog/register">Register</a></li>
+                    <li><a href="/blog/password_reset">Reset password</a></li>                
+                </ul>
+            </li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+              <li class="dropdown">
+                <a class="dropdown-toggle" data-toggle="dropdown" href="#">Language:
+                    <span class="caret"></span></a>
+
+                <ul class="dropdown-menu">
+                  <li><a href="chlng.php?lang=english">English (US)</a></li>
+                  <li><a href="chlng.php?lang=serbian">Srpski</a></li>
+                  <li><a href="chlng.php?lang=croatian">Hrvatski</a></li>
+                  <li><a href="chlng.php?lang=german">Deutsch</a></li>
+                </ul>
+              </li>        
+          </ul>
+      </div>
+    </nav>
+</div>
 
 
 <div class="container">
 
+<br>
+<br>
+<br>
+
 <?php
 
-	if(isset($_SESSION['message']))
-	{
-		echo '
-			  <br/><div class="alert alert-danger alert-dismissable fade in">
-			    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-			    <strong>Message:</strong> ',$_SESSION['message'],'
-			  </div>
-		';
-	}
-	unset($_SESSION['message']);
+
+    if(isset($_SESSION['message']))
+    {
+        echo '
+              <br/><div class="alert alert-danger alert-dismissable fade in">
+                <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                ',$_SESSION['message'],'
+              </div>
+        ';
+    }
+    unset($_SESSION['message']);
+
 
 ?>
+
+<form method="POST">
+
+    <div class="row">
+        <div class="col-sm-6">
+
+            <div id="frmCheckUsername">
+
+                <div class="form-group">
+                    <input type="text" class="demoInputBox" size="55" name="username" id="username" placeholder="<?php echo $lang['PH_USERNAME']; ?>">
+                </div>
+
+                <div class="form-group">
+                    <input type="password" class="demoInputBox" size="55" name="password" id="password" placeholder="<?php echo $lang['PH_PASSWORD']; ?>">
+                </div>
+                <div class="checkbox">
+                    <label><input type="checkbox"> <?php echo $lang['LOGIN_REMEMBER']; ?></label> &bull; <a href="/blog/password_reset"><?php echo $lang['LOGIN_FORGORPASS']; ?></a>
+                </div>
+                <input type="submit" name="login_submit" class="btn btn-primary" value="<?php echo $lang['MENU_LOGIN']; ?>">
+            </div>
+        </div>
+    </div>
+
+</form>    
 
 </div>
-
-<?php
-
-include('assets/footer.php');
-
-?>
-
 
 </body>
 </html>

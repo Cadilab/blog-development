@@ -22,7 +22,7 @@
 
 	// Now we edit welcome page
 
-	$lang['BODY_WELCOME'] = ' <br/><br/><br/><h3>Wilkommen auf meinem Blog.</h3>
+	$lang['BODY_WELCOME'] = '<h2>Wilkommen auf meinem Blog.</h2>
 							<p>Hier können Sie Blogs sehen, die von anderen Benutzern erstellt wurden, oder Sie können Ihre eigenen erstellen!</p>
 							<p>Um vollen Zugriff auf MyBlog zu erhalten, musst du dich registrieren.</p>
 							<p>Wenn Sie bereits ein Konto haben, melden Sie sich an!</p> ';
@@ -37,7 +37,9 @@
 	$lang['PH_REPASSWORD'] = 'Passwort wiederholen';
 
 	$lang['LOGIN_HEADER'] = 'Geben Sie Ihre Anmeldeinformationen ein';
-	$lang['LOGIN_REMEMBER'] = 'Erinnere dich an mich ?';
+	$lang['LOGIN_REMEMBER'] = 'Erinnere dich an mich';
+	$lang['LOGIN_FORGORPASS'] = 'Passwort vergessen ?';
+	
 	$lang['INVALID_CREDENTIALS'] = "Benutzername / Passwort ist ungültig.";
 
 	// Errors, Warnings, Info messages
